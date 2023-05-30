@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <section class="main">
+        <div class="container">
+            <div class="signup">
+                <h1 class="auth__title">Регистрация</h1>
+                <p class="text-danger">{{message_all}}</p>
+                <form id="signup-form" action="/admingoi/signup/" method="post">
+                    {% csrf_token %}
+                    <div class="auth-form__field field-signupform-name required">
+                        <label class="auth-form__label" for="signupform-name">Имя</label>
+                        <span class='auth-form__input--state'><input type="text" id="signupform-name" class="auth-form__input" value="{{name}}" name="name" aria-required="true"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message_name}}</p>
+                    <div class="auth-form__field field-signupform-phone required">
+                        <label class="auth-form__label" for="signupform-phone">Мобильный телефон</label>
+                        <span class='auth-form__input--state'><input type="text" id="signupform-phone" class="wc__input" value="{{phone}}" name="phone" aria-required="true" data-plugin-inputmask="inputmask_69a2315d"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message_phone}}</p>
+                    <div class="auth-form__field field-signupform-password required">
+                        <label class="auth-form__label" for="signupform-password">Пароль</label>
+                        <span class='auth-form__input--state'><input type="password" id="signupform-password" class="auth-form__input" name="password" aria-required="true"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message}}</p>
+                    <div class="form-group">
+                        <button type="submit" class="auth-form__btn" name="signup-button">Зарегистрироваться</button>    
+                    </div>
+            
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

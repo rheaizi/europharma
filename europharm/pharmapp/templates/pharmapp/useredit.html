@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <form action="/profile/{{id}}/edit/" method="post">
+    {% csrf_token %}
+     <label>Имя пользователья</label>
+     <input type="text"class="auth-form__input" value="{{name}}" name="name"><br>
+     <label class="auth-form__label" for="signupform-phone">Телефон</label>
+     <input type="text" id="signupform-phone" class="auth-form__input" value="{{phone}}" name="phone" aria-required="true"><br>
+     <label class="auth-form__label">Пароль</label>
+     <input type="password" id="signupform-password" class="auth-form__input" value="{{password}}" name="password" aria-required="true"><br>
+     <input type="submit">
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header_top">
+            <div class="header_top_inner">
+                <div class="header_logo">
+                    <a class="logo_link" href="http://127.0.0.1:8000/"><img class="logo_img" src="{% static 'img/logo.svg' %}" alt=""></a>
+                </div>
+                <ul class="top_menu">
+                    <li class="top_menu_item">
+                        <img class="city_map" src="{% static 'img/location.png' %}"></img>
+                        <span class="city_name">Ваш город: Алматы</span>
+                        <img class="city_arrow" src="{% static 'img/down-arrow.png' %}"></img>
+                    </li>
+                    <li class="top_menu_item"><a href="#">Контакты</a></li>
+                    <li class="top_menu_item"><a href="#">Доставка</a></li>
+                    <li class="top_menu_item"><a href="#">Аптеки</a></li>
+                    <li class="top_menu_item"><a href="#">О нас</a></li>
+                </ul>
+                <div class="language_switcher">
+                    <span>Русский <img src="{% static 'img/down-arrow.png' %}" alt="arrowdown"> </span>
+                </div>
+                <div class="order_status">
+                    <a href="#">Статус заказа</a>
+                </div>
+                <div class="auth">
+                    <a href="http://127.0.0.1:8000/login" class="auth_link">Личный кабинет</a>
+                </div>
+            </div>
+        </div>
+        <div class="header_bottom">
+            <div class="header_bottom_inner">
+                <div class="header_nav">
+                    <nav class="nav">
+                        <a href="#" class="nav_link">
+                            <img src="{% static 'img/menus.png' %}" alt="">
+                            Каталог товаров
+                        </a>
+                        <ul class="menu dropdown_menu"></ul>
+                    </nav>
+                </div>
+                <div class="header_search" itemscope itemtype="http:/schema.org/Website">
+                    <meta>
+                    <form action="" itemprop="potentialAction" itemscope itemtype="http:/schema.org/SearchAction">
+                        <input type="hidden" name="segment" value="available">
+                        <div class="form_group">
+                            <input type="text" class="search_form_input" name="q" placeholder="Поиск лекарств и товаров">  
+                            <div class="search_form_button">
+                                <div class="search_voice"></div>
+                                <button class="search_form_btn">
+                                    <span>Поиск</span>
+                                    <img src="{% static 'img/search.png' %}" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header_call">
+                    <div class="call-widget">
+                        <img class="icon-whatsapp" src="{% static 'img/whatsapp.png' %}"></img>
+                        <a class="call-widget_link" rel="nofollow" target="_blank" href="#">
+                            <span class="call-widget_code">+7 (775)</span>
+                            <span class="call-widget_phone">735 44 44</span>
+                        </a>
+                        <span class="call-widget_label">Режим работы 24/7</span>
+                    </div>
+                </div>
+                <div class="header_cart">
+                    <img src="{% static 'img/shop-bag.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <section class="main">
+        <div class="container">
+            <div class="signup">
+                <h1 class="auth__title">Регистрация</h1>
+                <div>
+                    <p class="text-danger">{{message_all}}</p>
+
+                </div>
+                <!-- http://localhost:8000/signup/ -->
+                <form id="signup-form" action="/signup/" method="post">
+                    {% csrf_token %}
+                    <div class="auth-form__field field-signupform-name required">
+                        <label class="auth-form__label" for="signupform-name">Имя пользователья</label>
+                        <span class='auth-form__input--state'><input type="text" id="signupform-name" class="auth-form__input" value="{{name}}" name="name" aria-required="true"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message_name}}</p>
+                    <div class="auth-form__field field-signupform-phone required">
+                        <label class="auth-form__label" for="signupform-phone">Мобильный телефон</label>
+                        <span class='auth-form__input--state'><input type="text" id="signupform-phone" class="wc__input" value="{{phone}}" name="phone" aria-required="true" data-plugin-inputmask="inputmask_69a2315d"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message_phone}}</p>
+                    <div class="auth-form__field field-signupform-password required">
+                        <label class="auth-form__label" for="signupform-password">Пароль</label>
+                        <span class='auth-form__input--state'><input type="password" id="signupform-password" class="auth-form__input" name="password" aria-required="true"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <div class="auth-form__field field-signupform-password required">
+                        <label class="auth-form__label" for="signupform-password">Повтори пароль</label>
+                        <span class='auth-form__input--state'><input type="password" id="signupform-password" class="auth-form__input" name="password2" aria-required="true"></span>
+                        <p class="help-block help-block-error"></p>
+                    </div>
+                    <p class="text-danger">{{message}}</p>
+                    <div class="form-group">
+                        <button type="submit" class="auth-form__btn" name="signup-button">Зарегистрироваться</button>    
+                    </div>
+            
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="container">
+                <div class="footer-about">
+                    <a class="footer-logo" href="#">
+                        <img class="footer-logo__img" src="{% static 'img/logo-footer.png' %}" alt="">
+                    </a>
+                    <p class="footer-licence">Лицензия <a class="footer-licence__link" href="/certificate">№PP65900264DX</a> на ведение <br> фармацевтической деятельности от 21.12.2006</p>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Информация</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Новости</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">О компании</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Контакты</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Карьера</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Наша миссия</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Партнеры</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Покупателю</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Статус заказа</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Доставка 24/7</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Оплата</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Как сделать заказ</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Вопросы и ответы</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Контроль качества</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Блог</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Документы</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Политика Конфиденциальности</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Договор публичной оферты о <br>предоставлении услуг</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Условия возврата и обмена Europharma</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <div class="footer-information__title">Контакты</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <div class="footer-email">Email: <a class="footer-email__link" href="mailto:order@aqnietgroup.com">order@aqnietgroup.com</a></div>
+                        </li>
+                        <li class="footer-menu__item">
+                            <div class="footer-email">Режим работы 24/7</div>
+                        </li>
+                    </ul>
+                    <div class="footer-social">
+                        <a class="footer-social__link" href="https://www.instagram.com/europharma/" target="_blank" rel="noopener">
+                            <img src="{% static 'img/instagram.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://www.youtube.com/channel/UCIODMZY3CwJhG2RSkxmDpFg" target="_blank" rel="noopener">
+                            <img src="{% static 'img/youtube.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://twitter.com/europharma_" target="_blank" rel="noopener">
+                            <img src="{% static 'img/twitter.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://www.facebook.com/europharma.kz" target="_blank" rel="noopener">
+                            <img src="{% static 'img/facebook.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://wa.me/77757354444" target="_blank" rel="noopener">
+                            <img src="{% static 'img/whatsapp2.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="footer-copyright">
+                    <div class="footer-copyright__text">&copy; Интернет Аптека Europharma 2014 - 2023</div>
+                </div>
+                <div class="footer-settings">
+                    <div class="footer-city popup-trigger">
+                        <img src="{% static 'img/location2.png' %}" alt="">
+                        <span class="footer-city__name">Ваш город: Алматы</span>
+                    </div>
+                    <ul class="footer-lang"><li class="footer-lang__item active"><a class="footer-lang__link" href="/ru/login">Русский</a></li>
+                        <li class="footer-lang__item"><a class="footer-lang__link" href="/kz/login">Қазақша</a></li>
+                        <li class="footer-lang__item"><a class="footer-lang__link" href="/en/login">English</a></li></ul>
+                    </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

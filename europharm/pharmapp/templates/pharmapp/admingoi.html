@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <section class="discount" style="height: 100%; margin-bottom: 100px; width: 100vw;">
+        <div class="discount_title" style="text-align: center; font-size: 35px; margin-top: 30px;">Препараты</div>
+        <div class="popular_product_wrap shadow-sm" style="display: flex; flex-wrap: wrap; margin: 0 auto; justify-content: center;">
+        {%  for medicine in medicines %}
+               <!-- <a href="/admingoi/{{medicine.id}}"> -->
+                <div class="popular_product_item shadow-sm">
+                    <div class="popular_product_img">
+                        <img src="{{ medicine.image.url }}" width="80px" alt="">
+                    </div>
+                    <div class="popular-product_detail">
+                        <div class="discount_title">{{ medicine.name }}</div>
+                        <div class="popular-product_descr" >{{medicine.description}}</div>
+                        <div class="popular-product_prices">
+                            <span class="popular-product_prices" >{{medicine.price}}</span>
+                            <span class="popular-product_currency">₸</span>
+                        </div>
+                        <div class="discount_quantity">{{medicine.quantity}} шт</div>
+                        <a href="/admingoi/{{medicine.id}}/delete">delete </a><a href="/admingoi/{{medicine.id}}">   edit</a>
+                    </div>
+                </div>
+            <!-- </a> -->
+        {% endfor %}
+    </div>
+    </section>
+
+
+    <a href="/admingoi/add">Add Medicines</a><br>
+    <a href="http://127.0.0.1:8000/admingoi/admin">to back</a>
+   
+
+</body>
+</html>

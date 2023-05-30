@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <section class="discount" style="height: 100%; margin-bottom: 100px; width: 100vw;">
+        <div class="discount_title" style="text-align: center; font-size: 35px; margin-top: 30px;">Пользователи</div>
+        <div class="popular_product_wrap shadow-sm" style="display: flex; flex-wrap: wrap; margin: 0 auto; justify-content: center;">
+        {%  for user in users %}
+                <div class="popular_product_item shadow-sm">
+                    <div class="popular-product_detail">
+                        <div class="discount_title">{{ user.name }}</div>
+                        <div class="popular-product_descr " >{{ user.phone }}</div>
+                        <a href="/admingoi/{{user.id}}/deleteuser">delete </a><a href="/admingoi/{{user.id}}/edituser">   edit</a>
+                    </div>
+                </div>
+            <!-- </a> -->
+        {% endfor %}
+    </div>
+    </section>
+
+
+    <a href="/admingoi/add">Add Users</a><br>
+    <a href="http://127.0.0.1:8000/admingoi/admin">to back</a>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header_top">
+            <div class="header_top_inner">
+                <div class="header_logo">
+                    <a class="logo_link" href="#"><img class="logo_img" src="{% static 'img/logo.svg' %}" alt=""></a>
+                </div>
+                <ul class="top_menu">
+                    <li class="top_menu_item">
+                        <img class="city_map" src="{% static 'img/location.png' %}"></img>
+                        <span class="city_name">Ваш город: Алматы</span>
+                        <img class="city_arrow" src="{% static 'img/down-arrow.png' %}"></img>
+                    </li>
+                    <li class="top_menu_item"><a href="#">Контакты</a></li>
+                    <li class="top_menu_item"><a href="#">Доставка</a></li>
+                    <li class="top_menu_item"><a href="#">Аптеки</a></li>
+                    <li class="top_menu_item"><a href="#">О нас</a></li>
+                </ul>
+                <div class="language_switcher">
+                    <span>Русский <img src="{% static 'img/down-arrow.png' %}" alt="arrowdown"> </span>
+                </div>
+                <div class="order_status">
+                    <a href="#">Статус заказа</a>
+                </div>
+                <div class="auth">
+                    {% if temp == 0 %}
+                    <a href="signin/" class="auth_link">Личный кабинет</a>
+                    {% else %}
+                    <a href="/profile">
+                    <img  src="{% static 'img/user-profile.png' %}" width= "32px" height="32px" alt="">
+                    <span>{{name}}</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="header_bottom">
+            <div class="header_bottom_inner">
+                <div class="header_nav">
+                    <nav class="nav">
+                        <a href="#" class="nav_link">
+                            <img src="{% static 'img/menus.png' %}" alt="">
+                            Каталог товаров
+                        </a>
+                        <ul class="menu dropdown_menu"></ul>
+                    </nav>
+                </div>
+                <div class="header_search" itemscope itemtype="http:/schema.org/Website">
+                    <meta>
+                    <form action="" itemprop="potentialAction" itemscope itemtype="http:/schema.org/SearchAction">
+                        <input type="hidden" name="segment" value="available">
+                        <div class="form_group">
+                            <input type="text" class="search_form_input" name="q" placeholder="Поиск лекарств и товаров">  
+                            <div class="search_form_button">
+                                <div class="search_voice"></div>
+                                <button class="search_form_btn">
+                                    <span>Поиск</span>
+                                    <img src="{% static 'img/search.png' %}" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header_call">
+                    <div class="call-widget">
+                        <img class="icon-whatsapp" src="{% static 'img/whatsapp.png' %}"></img>
+                        <a class="call-widget_link" rel="nofollow" target="_blank" href="#">
+                            <span class="call-widget_code">+7 (775)</span>
+                            <span class="call-widget_phone">735 44 44</span>
+                        </a>
+                        <span class="call-widget_label">Режим работы 24/7</span>
+                    </div>
+                </div>
+                <div class="header_cart">
+                    <img src="{% static 'img/shop-bag.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <section class="sliders">
+        <div class="container wrapper">
+            <div class="slider_main">
+                <img src="{% static 'img/bigadv.jpg' %}" alt="">
+            </div>
+            <div class="slider_additional">
+                <div class="slider_additional_item">
+                    <img src="{% static 'img/adv.jpg' %}" alt="" width="360px" height="220px">
+                </div>
+                <div class="slider_additional_item">
+                    <img src="{% static 'img/adv2.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+<!--    <section class="popular-product">-->
+<!--        <div class="container">-->
+<!--            <div class="popular_product_head">-->
+<!--                <div class="popular_product_title">Популярные товары</div>-->
+<!--            </div>-->
+<!--            <div class="popular_product_body">-->
+<!--                <div class="popular_product_list">-->
+<!--                    <div class="popular_product_item">-->
+<!--                        <div class="popular_product_img">-->
+<!--                            <img src="{% static 'img/list1.jpeg' %}" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="popular-product_detail">-->
+<!--                            <div class="popular-product_title">ТЕЙМУРОВА от запаха и пота для ног 50 мл крем-паста</div>-->
+<!--                            <div class="popular-product_prices">-->
+<!--                                <span class="popular-product_prices" >564</span>-->
+<!--                                <span class="popular-product_currency">₸</span>-->
+<!--                            </div>-->
+<!--                            <div class="popular-product_actions"><button class="popular-product_btn">В корзину</button></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="popular_product_item">-->
+<!--                        <div class="popular_product_img">-->
+<!--                            <img src="{% static 'img/list2.png' %}" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="popular-product_detail">-->
+<!--                            <div class="popular-product_title">Nestle смесь Nan 3 Optipro для детей с 12 месяцев 800 г</div>-->
+<!--                            <div class="popular-product_prices">-->
+<!--                                <span class="popular-product_prices" >9 855</span>-->
+<!--                                <span class="popular-product_currency">₸</span>-->
+<!--                            </div>-->
+<!--                            <div class="popular-product_actions">-->
+<!--                                <button class="popular-product_btn">В корзину</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="popular_product_item">-->
+<!--                        <div class="popular_product_img">-->
+<!--                            <img src="{% static 'img/list3.jpg' %}" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="popular-product_detail">-->
+<!--                            <div class="popular-product_title">Similac смесь Gold 1 молочная для детей с 0 месяцев 400 г</div>-->
+<!--                            <div class="popular-product_prices">-->
+<!--                                <span class="popular-product_prices" >4 742</span>-->
+<!--                                <span class="popular-product_currency">₸</span>-->
+<!--                            </div>-->
+<!--                            <div class="popular-product_actions">-->
+<!--                                <button class="popular-product_btn">В корзину</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="popular_product_item">-->
+<!--                        <div class="popular_product_img">-->
+<!--                            <img src="{% static 'img/list4.png' %}" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="popular-product_detail">-->
+<!--                            <div class="popular-product_title">Asu Минерал Terra 0,5 л</div>-->
+<!--                            <div class="popular-product_prices">-->
+<!--                                <span class="popular-product_prices" >448</span>-->
+<!--                                <span class="popular-product_currency">₸</span>-->
+<!--                            </div>-->
+<!--                            <div class="popular-product_actions">-->
+<!--                                <button class="popular-product_btn">В корзину</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+    <section class="popular-brand">
+        <div class="container">
+            <div class="popular_brand_head">
+                <div class="popular_brand_title">Популярные Бренды</div>
+            </div>
+            <div class="popular_brand_list">
+                <div class="popular_brand_item"><img src="{% static 'img/brand1.jpg' %}" alt=""></div>
+                <div class="popular_brand_item"><img src="{% static 'img/brand2.jpg' %}" alt=""></div>
+                <div class="popular_brand_item"><img src="{% static 'img/brand3.png' %}" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <section class="popular_material">
+        <div class="container">
+            <div class="popular_material_head">
+                <div class="popular_material_title">Популярные материалы</div>
+            </div>
+            <div class="popular_material_list">
+                <div class="popular_material_item">
+                    <div class="popular_material_top">
+                        <img class="popular_material_img" src="{% static 'img/material1.jpeg' %}"></img>
+                        <span class="popular_material_category">Здоровый образ жизни</span>
+                    </div>
+                    <div class="popular_material_name">​В чем разница между жирами омега-3 и омега-6?</div>
+                </div>
+                <div class="popular_material_item">
+                    <div class="popular_material_top">
+                        <img class="popular_material_img" src="{% static 'img/material2.jpg' %}"></img>
+                        <span class="popular_material_category">Материнство и детство</span>
+                    </div>
+                    <div class="popular_material_name">​В чем разница между жирами омега-3 и омега-6?</div>
+                </div>
+                <div class="popular_material_item">
+                    <div class="popular_material_top">
+                        <img class="popular_material_img" src="{% static 'img/material3.jpg' %}"></img>
+                        <span class="popular_material_category">Красота и здоровье</span>
+                    </div>
+                    <div class="popular_material_name">​В чем разница между жирами омега-3 и омега-6?</div>
+                </div>
+                <div class="popular_material_item">
+                    <div class="popular_material_top">
+                        <img class="popular_material_img" src="{% static 'img/material4.jpg' %}"></img>
+                        <span class="popular_material_category">Красота и здоровье</span>
+                    </div>
+                    <div class="popular_material_name">​В чем разница между жирами омега-3 и омега-6?</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="discount" style="height: 100%; margin-bottom: 100px; width: 100vw;">
+        <div class="discount_title" style="text-align: center; font-size: 35px; margin-top: 30px;">Препараты</div>
+        <div class="popular_product_wrap shadow-sm" style="display: flex; flex-wrap: wrap; margin: 0 auto; justify-content: center;">
+        {%  for medicine in medicines %}
+                <!-- <div class="wrapper">
+                    <div style="color:black">Препарат: {{  medicine.name  }}</div>
+                    <div style="color:black">Цена: {{  medicine.price  }}</div>
+                </div> -->
+            <a href="{% url 'itempage' medicine.id %}">
+                <div class="popular_product_item shadow-sm">
+                    <div class="popular_product_img">
+                        <img src="{{ medicine.image.url }}" width="80px" alt="">
+                    </div>
+                    <div class="popular-product_detail">
+                        <div class="discount_title">{{ medicine.name }}</div>
+                        <div class="popular-product_descr" >{{medicine.description}}</div>
+                        <div class="popular-product_prices">
+                            <span class="popular-product_prices" >{{medicine.price}}</span>
+                            <span class="popular-product_currency">₸</span>
+                        </div>
+                        <div class="discount_quantity">{{medicine.quantity}} шт</div>
+                        <!-- <div class="popular-product_actions">
+                            <button class="popular-product_btn">В корзину</button>
+                        </div> -->
+                    </div>
+                </div>
+                </a>
+        {% endfor %}
+    </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="container">
+                <div class="footer-about">
+                    <a class="footer-logo" href="#">
+                        <img class="footer-logo__img" src="{% static 'img/logo-footer.png' %}" alt="">
+                    </a>
+                    <p class="footer-licence">Лицензия <a class="footer-licence__link" href="/certificate">№PP65900264DX</a> на ведение <br> фармацевтической деятельности от 21.12.2006</p>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Информация</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Новости</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">О компании</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Контакты</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Карьера</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Наша миссия</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Партнеры</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Покупателю</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Статус заказа</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Доставка 24/7</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Оплата</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Как сделать заказ</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Вопросы и ответы</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Контроль качества</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Блог</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-information">
+                    <div class="footer-information__title">Документы</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Политика Конфиденциальности</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Договор публичной оферты о <br>предоставлении услуг</a>
+                        </li>
+                        <li class="footer-menu__item">
+                            <a class="footer-menu__link" href="#!">Условия возврата и обмена Europharma</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <div class="footer-information__title">Контакты</div>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item">
+                            <div class="footer-email">Email: <a class="footer-email__link" href="mailto:order@aqnietgroup.com">order@aqnietgroup.com</a></div>
+                        </li>
+                        <li class="footer-menu__item">
+                            <div class="footer-email">Режим работы 24/7</div>
+                        </li>
+                    </ul>
+                    <div class="footer-social">
+                        <a class="footer-social__link" href="https://www.instagram.com/europharma/" target="_blank" rel="noopener">
+                            <img src="{% static 'img/instagram.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://www.youtube.com/channel/UCIODMZY3CwJhG2RSkxmDpFg" target="_blank" rel="noopener">
+                            <img src="{% static 'img/youtube.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://twitter.com/europharma_" target="_blank" rel="noopener">
+                            <img src="{% static 'img/twitter.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://www.facebook.com/europharma.kz" target="_blank" rel="noopener">
+                            <img src="{% static 'img/facebook.png' %}" alt="">
+                        </a>
+                        <a class="footer-social__link" href="https://wa.me/77757354444" target="_blank" rel="noopener">
+                            <img src="{% static 'img/whatsapp2.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="footer-copyright">
+                    <div class="footer-copyright__text">&copy; Интернет Аптека Europharma 2014 - 2023</div>
+                </div>
+                <div class="footer-settings">
+                    <div class="footer-city popup-trigger">
+                        <img src="{% static 'img/location2.png' %}" alt="">
+                        <span class="footer-city__name">Ваш город: Алматы</span>
+                    </div>
+                    <ul class="footer-lang"><li class="footer-lang__item active"><a class="footer-lang__link" href="/ru/login">Русский</a></li>
+                        <li class="footer-lang__item"><a class="footer-lang__link" href="/kz/login">Қазақша</a></li>
+                        <li class="footer-lang__item"><a class="footer-lang__link" href="/en/login">English</a></li></ul>
+                    </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
